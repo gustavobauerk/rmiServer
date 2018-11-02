@@ -2,18 +2,31 @@ package interfaces;
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;
-import java.util.ArrayList;
-import java.util.Date;
+import java.util.List;
+import principal.*;
 
 public interface InterfaceServ extends Remote {
-    public ArrayList<String> consultar() throws RemoteException;
+    /**
+     * Retorna uma lista de passagens
+     * @param query filtro da pesquisa
+     * @return lista de passagens
+     * @throws RemoteException
+     */
+    public List<Trip> searchAirfare(Trip query) throws RemoteException;
 
-    public byte[] download(String nomeArq) throws RemoteException;
+    /**
+     * Compra uma passagem
+     * @param query
+     * @throws RemoteException
+     */
+    public void buyAirfare(Trip query) throws RemoteException;
 
-    public int upload(byte[] f, String nome) throws RemoteException;
+    public List<Hotel> searchHotel(Hotel query) throws RemoteException;
 
-    public void registrarInteresse(String nomeArq, InterfaceCliente cliente, Date dataValidade) throws RemoteException;
+    public void buyHotel(Hotel query) throws RemoteException;
 
-    public void cancelarRegistro(String nomeArq, InterfaceCliente cliente) throws RemoteException;
+    public void registerInterest(String event, InterfaceCliente client, String destination, Integer price) throws RemoteException;
+
+    public void cancelRegister(String event, InterfaceCliente client, String destination, Integer price) throws RemoteException;
 
 }

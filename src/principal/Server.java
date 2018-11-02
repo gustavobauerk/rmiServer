@@ -26,10 +26,12 @@ public class Server {
     }
 
     public static void main(String[] args) {
+        System.out.println("asd");
         System.setProperty("java.security.policy", "file:java.policy");
         Server server = new Server();
         Scanner scan = new Scanner(System.in);
         boolean flag = true;
+        int i =0;
         while (flag) {
             String entrada = scan.nextLine();
             if (entrada.equals("teste")) {
@@ -37,6 +39,8 @@ public class Server {
             if (entrada.equalsIgnoreCase("sair")) {
                 break;
             }
+            System.out.println(i);
+            i++;
         }
     }
 
