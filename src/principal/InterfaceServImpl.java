@@ -4,7 +4,9 @@ import interfaces.InterfaceCliente;
 import interfaces.InterfaceServ;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class InterfaceServImpl extends UnicastRemoteObject implements InterfaceServ {
     protected InterfaceServImpl() throws RemoteException {
@@ -13,7 +15,12 @@ public class InterfaceServImpl extends UnicastRemoteObject implements InterfaceS
 
     @Override
     public List<Trip> searchAirfare(Trip query) throws RemoteException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        List<Trip> result = new ArrayList<>();
+        Random rand = new Random();
+        int n = rand.nextInt(50) + 1;
+        query.setNumberOfAirfares(n);
+        result.add(query);
+        return result;
     }
 
     @Override

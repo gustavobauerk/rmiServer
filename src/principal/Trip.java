@@ -5,12 +5,13 @@
  */
 package principal;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  * Classe que simboliza a passagem aérea
  */
-public class Trip {
+public class Trip implements Serializable {
     /**
      * Váriavel para viagem ser de ida(false), ida e volta(true)
      */
