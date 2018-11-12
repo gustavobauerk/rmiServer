@@ -18,9 +18,7 @@ public class Server {
             interf = new InterfaceServImpl();
             servicoNomes = LocateRegistry.createRegistry(10000);
             servicoNomes.bind("Server", interf);
-        } catch (RemoteException e) {
-            // TODO Auto-generated catch block
-        } catch (AlreadyBoundException e) {
+        } catch (RemoteException | AlreadyBoundException e) {
             System.out.println("Fukeq");
         }
     }
@@ -30,16 +28,11 @@ public class Server {
         Server server = new Server();
         Scanner scan = new Scanner(System.in);
         boolean flag = true;
-        int i = 0;
         while (flag) {
             String entrada = scan.nextLine();
-            if (entrada.equals("teste")) {
-            }
             if (entrada.equalsIgnoreCase("sair")) {
                 break;
             }
-            System.out.println(i);
-            i++;
         }
     }
 

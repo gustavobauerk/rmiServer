@@ -6,52 +6,30 @@
 package principal;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDate;
 
 /**
  * Classe que simboliza a passagem aérea
  */
 public class Trip implements Serializable {
     /**
-     * Váriavel para viagem ser de ida(false), ida e volta(true)
-     */
-    private boolean roundTrip;
-    /**
-     * Origem da passagem
+     * Origem da viagem
      */
     private String source;
     /**
-     * Destino da passagem
+     * Destino da viagem
      */
     private String destination;
     /**
-     * Data de ida da viagem
+     * Data da viagem
      */
-    private Date begin;
+    private LocalDate date;
     /**
-     * Data de volta da viagem
-     */
-    private Date end;
-    /**
-     * Numero de passagens
+     * Numero de passagens disponiveis
      */
     private Integer numberOfAirfares;
 
-    /**
-     * Retorna true caso a viagem seja de ida e volta, false caso só ida
-     * @return true caso a viagem seja de ida e volta, false caso só ida
-     */
-    public boolean isRoundTrip() {
-        return roundTrip;
-    }
-
-    /**
-     * Define se a viagem é só de ida ou de ida e volta
-     * @param roundTrip true caso a viagem seja de ida e volta, false caso só ida
-     */
-    public void setRoundTrip(boolean roundTrip) {
-        this.roundTrip = roundTrip;
-    }
+    private Integer price;
 
     /**
      * Retorna
@@ -73,22 +51,6 @@ public class Trip implements Serializable {
         this.destination = destination;
     }
 
-    public Date getBegin() {
-        return begin;
-    }
-
-    public void setBegin(Date begin) {
-        this.begin = begin;
-    }
-
-    public Date getEnd() {
-        return end;
-    }
-
-    public void setEnd(Date end) {
-        this.end = end;
-    }
-
     public Integer getNumberOfAirfares() {
         return numberOfAirfares;
     }
@@ -96,5 +58,22 @@ public class Trip implements Serializable {
     public void setNumberOfAirfares(Integer numberOfAirfares) {
         this.numberOfAirfares = numberOfAirfares;
     }
+
+    public LocalDate getDate() {
+        return date;
+    }
+
+    public void setDate(LocalDate date) {
+        this.date = date;
+    }
+
+    public Integer getPrice() {
+        return price;
+    }
+
+    public void setPrice(Integer price) {
+        this.price = price;
+    }
+
 
 }
