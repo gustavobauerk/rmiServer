@@ -1,10 +1,10 @@
+package principal;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package principal;
-
 import java.io.Serializable;
 import java.time.LocalDate;
 
@@ -13,23 +13,45 @@ import java.time.LocalDate;
  */
 public class Trip implements Serializable {
     /**
-     * Origem da viagem
+     * Váriavel para viagem ser de ida(false), ida e volta(true)
+     */
+    private boolean roundTrip;
+    /**
+     * Origem da passagem
      */
     private String source;
     /**
-     * Destino da viagem
+     * Destino da passagem
      */
     private String destination;
     /**
-     * Data da viagem
+     * Data de ida da viagem
      */
-    private LocalDate date;
+    private LocalDate begin;
     /**
-     * Numero de passagens disponiveis
+     * Data de volta da viagem
+     */
+    private LocalDate end;
+    /**
+     * Numero de passagens
      */
     private Integer numberOfAirfares;
 
-    private Integer price;
+    /**
+     * Retorna true caso a viagem seja de ida e volta, false caso só ida
+     * @return true caso a viagem seja de ida e volta, false caso só ida
+     */
+    public boolean isRoundTrip() {
+        return roundTrip;
+    }
+
+    /**
+     * Define se a viagem é só de ida ou de ida e volta
+     * @param roundTrip true caso a viagem seja de ida e volta, false caso só ida
+     */
+    public void setRoundTrip(boolean roundTrip) {
+        this.roundTrip = roundTrip;
+    }
 
     /**
      * Retorna
@@ -51,6 +73,22 @@ public class Trip implements Serializable {
         this.destination = destination;
     }
 
+    public LocalDate getBegin() {
+        return begin;
+    }
+
+    public void setBegin(LocalDate begin) {
+        this.begin = begin;
+    }
+
+    public LocalDate getEnd() {
+        return end;
+    }
+
+    public void setEnd(LocalDate end) {
+        this.end = end;
+    }
+
     public Integer getNumberOfAirfares() {
         return numberOfAirfares;
     }
@@ -58,22 +96,5 @@ public class Trip implements Serializable {
     public void setNumberOfAirfares(Integer numberOfAirfares) {
         this.numberOfAirfares = numberOfAirfares;
     }
-
-    public LocalDate getDate() {
-        return date;
-    }
-
-    public void setDate(LocalDate date) {
-        this.date = date;
-    }
-
-    public Integer getPrice() {
-        return price;
-    }
-
-    public void setPrice(Integer price) {
-        this.price = price;
-    }
-
 
 }

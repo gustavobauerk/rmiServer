@@ -2,28 +2,39 @@ package interfaces;
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;
-import java.util.List;
-import principal.*;
+import principal.Hotel;
+import principal.Trip;
 
 public interface InterfaceServ extends Remote {
     /**
      * Retorna uma lista de passagens
-     * @param query filtro da pesquisa
+     * @param ida
+     * @param source
+     * @param destination
+     * @param dateIda
+     * @param passagens
+     * @param dateVolta
      * @return lista de passagens
      * @throws RemoteException
      */
-    public List<Trip> searchAirfare(Trip query) throws RemoteException;
+    public Trip searchAirfare(boolean ida, String source, String destination, String dateIda, String dateVolta, int passagens) throws RemoteException;
 
     /**
-     * Compra uma passagem
-     * @param query
+     * Retorna uma lista de passagens
+     * @param ida
+     * @param source
+     * @param destination
+     * @param dateIda
+     * @param passagens
+     * @param dateVolta
+     * @return estado da compra
      * @throws RemoteException
      */
-    public void buyAirfare(Trip query) throws RemoteException;
+    public boolean buyAirfare(boolean ida, String source, String destination, String dateIda, String dateVolta, int passagens) throws RemoteException;
 
-    public List<Hotel> searchHotel(Hotel query) throws RemoteException;
+    public Hotel searchHotel(String name, String flightdate, String flightdateVolta, int numberOfRooms, int numberOfPeople) throws RemoteException;
 
-    public void buyHotel(Hotel query) throws RemoteException;
+    public boolean buyHotel(String name, String flightdate, String flightdateVolta, int numberOfRooms, int numberOfPeople) throws RemoteException;
 
     public void registerInterest(String event, InterfaceCliente client, String destination, Integer price) throws RemoteException;
 

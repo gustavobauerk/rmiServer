@@ -4,37 +4,34 @@ import interfaces.InterfaceCliente;
 import interfaces.InterfaceServ;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
+import stack.LeiaCSV;
 
 public class InterfaceServImpl extends UnicastRemoteObject implements InterfaceServ {
-    private List<Trip> trips = new ArrayList<>();
-    private List<String> places = new ArrayList<>();
-
     protected InterfaceServImpl() throws RemoteException {
-        places.add("Curitiba");
-        places.add("Londres");
-        places.add("Paris");
-        places.add("Boston");
-        geraTrips();
     }
 
     @Override
-    public List<Trip> searchAirfare(Trip query) throws RemoteException {
-        List<Trip> result = new ArrayList<>();
+    public Trip searchAirfare(boolean ida, String source, String destination, String dateIda, String dateVolta, int passagens) throws RemoteException {
+        Trip result = new Trip();
+        result = LeiaCSV.searchTrip(ida, source, destination, dateIda, dateVolta, passagens);
         return result;
     }
 
     @Override
-    public void buyAirfare(Trip query) throws RemoteException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public boolean buyAirfare(boolean ida, String source, String destination, String dateIda, String dateVolta, int passagens) throws RemoteException {
+        boolean result = false;
+        try {
+            result = LeiaCSV.buyTrip(ida, source, destination, dateIda, dateVolta, passagens);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            result = false;
+        }
+        return result;
     }
 
     @Override
     public void registerInterest(String event, InterfaceCliente client, String destination, Integer price) throws RemoteException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        LeiaCSV.registrar(event, client, destination, price);
     }
 
     @Override
@@ -43,44 +40,21 @@ public class InterfaceServImpl extends UnicastRemoteObject implements InterfaceS
     }
 
     @Override
-    public List<Hotel> searchHotel(Hotel query) throws RemoteException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Hotel searchHotel(String name, String flightdate, String flightdateVolta, int numberOfRooms, int numberOfPeople) throws RemoteException {
+        Hotel result = new Hotel();
+        result = LeiaCSV.searchHotel(name, flightdate, flightdateVolta, numberOfRooms, numberOfPeople);
+        return result;
     }
 
     @Override
-    public void buyHotel(Hotel query) throws RemoteException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    public List<Trip> getTrips() {
-        return trips;
-    }
-
-    public void setTrips(List<Trip> trips) {
-        this.trips = trips;
-    }
-
-    private void geraTrips() {
-        Random rand = new Random();
-        int aux, aux1;
-        for (int i = 0 ; i < 25 ; i++) {
-            Trip trip = new Trip();
-            trip.setNumberOfAirfares(rand.nextInt(50) + 250);
-            trip.setPrice(rand.nextInt(1000) + 200);
-            aux = rand.nextInt(places.size());
-            trip.setSource(places.get(aux));
-            do {
-                aux1 = rand.nextInt(places.size());
-            } while (aux1 == aux);
-            trip.setDestination(places.get(aux1));
-            trip.setDate(geraDate());
-            this.trips.add(trip);
+    public boolean buyHotel(String name, String flightdate, String flightdateVolta, int numberOfRooms, int numberOfPeople) throws RemoteException {
+        boolean result = false;
+        try {
+            result = LeiaCSV.buyHotel(name, flightdate, flightdateVolta, numberOfRooms, numberOfPeople);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            result = false;
         }
-    }
-
-    private LocalDate geraDate() {
-        Random rand = new Random();
-        LocalDate result = LocalDate.of(2018, rand.nextInt(3) + 10, rand.nextInt(28) + 1);
         return result;
     }
 
