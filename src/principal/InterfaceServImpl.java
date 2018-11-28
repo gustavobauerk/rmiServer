@@ -6,9 +6,10 @@ import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import stack.LeiaCSV;
 
+/**
+ * Implementa os métodos do servidor
+ */
 public class InterfaceServImpl extends UnicastRemoteObject implements InterfaceServ {
-    protected InterfaceServImpl() throws RemoteException {
-    }
 
     @Override
     public Trip searchAirfare(boolean ida, String source, String destination, String dateIda, String dateVolta, int passagens) throws RemoteException {
@@ -23,7 +24,6 @@ public class InterfaceServImpl extends UnicastRemoteObject implements InterfaceS
         try {
             result = LeiaCSV.buyTrip(ida, source, destination, dateIda, dateVolta, passagens);
         } catch (Exception ex) {
-            ex.printStackTrace();
             result = false;
         }
         return result;
@@ -52,7 +52,6 @@ public class InterfaceServImpl extends UnicastRemoteObject implements InterfaceS
         try {
             result = LeiaCSV.buyHotel(name, flightdate, flightdateVolta, numberOfRooms, numberOfPeople);
         } catch (Exception ex) {
-            ex.printStackTrace();
             result = false;
         }
         return result;

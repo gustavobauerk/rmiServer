@@ -9,10 +9,16 @@ import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+/**
+ * Servidor
+ */
 public class Server {
     private InterfaceServImpl interf;
     private static InterfaceCliente cli;
 
+    /**
+     * Inicia servidor
+     */
     public Server() {
         if (System.getSecurityManager() == null) {
             System.setSecurityManager(new SecurityManager());

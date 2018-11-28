@@ -11,17 +11,36 @@ import java.util.Arrays;
 import principal.Hotel;
 import principal.Trip;
 
+/**
+ * Regra de negócio
+ */
 public class LeiaCSV {
+    /**
+     * Retorna uma passagem
+     * @param ida false só ida, true ida e volta
+     * @param source da onde está viajanto
+     * @param destination para onde está viajando
+     * @param dateIda data de ida do voo
+     * @param passagens numero de passagenes desejadas
+     * @param dateVolta data do voo de volta
+     * @return a passagem caso encontrada
+     */
     public static Trip searchTrip(boolean ida, String source, String destination, String dateIda, String dateVolta, int passagens) {
         Trip result = new Trip();
+        //Path do arquivo de passagens
         String arquivoCSV = "C:\\Users\\Gustavo\\Documents\\NetBeansProjects\\Server\\src\\stack\\passagem.csv";
         BufferedReader br = null;
         String linha = "";
+        //Divisor de strings
         String csvDivisor = ",";
         try {
+            //Le arquivo
             br = new BufferedReader(new FileReader(arquivoCSV));
+            //Le linha do arquivo
             while ((linha = br.readLine()) != null) {
+                //pega linha e divide em strings
                 String[] resultCSV = linha.split(csvDivisor);
+                //se os dados são iguais o da viagem, põe na viagem
                 if (resultCSV[0].equals(source) && resultCSV[1].equals(destination)
                     && LocalDate.parse(resultCSV[2]).equals(LocalDate.parse(dateIda))
                     && Integer.valueOf(resultCSV[3]) >= passagens) {
@@ -32,10 +51,15 @@ public class LeiaCSV {
                     break;
                 }
             }
+            //Se é ida e volta
             if (ida) {
+                //Le arquivo
                 br = new BufferedReader(new FileReader(arquivoCSV));
+                //Le linha
                 while ((linha = br.readLine()) != null) {
+                    //pega linha e divide em strings
                     String[] resultCSV = linha.split(csvDivisor);
+                    //se os dados são iguais o da viagem, põe na viagem
                     if (resultCSV[0].equals(destination) && resultCSV[1].equals(source)
                         && LocalDate.parse(resultCSV[2]).equals(LocalDate.parse(dateVolta))
                         && Integer.valueOf(resultCSV[3]) >= passagens) {
@@ -46,6 +70,7 @@ public class LeiaCSV {
                     }
                 }
             }
+            //Se é ida e volta e não tem os dados, retorna nulo
             if (ida && (result.getBegin() == null || result.getEnd() == null)) {
                 result = null;
             }
@@ -64,6 +89,16 @@ public class LeiaCSV {
         return result;
     }
 
+    /**
+     * Retorna uma passagem
+     * @param ida false só ida, true ida e volta
+     * @param source da onde está viajanto
+     * @param destination para onde está viajando
+     * @param dateIda data de ida do voo
+     * @param passagens numero de passagenes desejadas
+     * @param dateVolta data do voo de volta
+     * @return a passagem caso encontrada
+     */
     public synchronized static boolean buyTrip(boolean ida, String source, String destination, String dateIda, String dateVolta, int passagens) {
         boolean result = false;
         boolean flag1 = false;
