@@ -3,7 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Gustavo/Documents/NetBeansProjects/Server/src/principal/Server.java</file>
+            <file>file:/C:/Users/Gustavo/Documents/NetBeansProjects/rmiServer/src/interfaces/InterfaceCliente.java</file>
+            <file>file:/C:/Users/Gustavo/Documents/NetBeansProjects/rmiServer/src/principal/Hotel.java</file>
+            <file>file:/C:/Users/Gustavo/Documents/NetBeansProjects/rmiServer/src/principal/Server.java</file>
+            <file>file:/C:/Users/Gustavo/Documents/NetBeansProjects/rmiServer/src/stack/LeiaCSV.java</file>
+            <file>file:/C:/Users/Gustavo/Documents/NetBeansProjects/rmiServer/src/principal/Trip.java</file>
+            <file>file:/C:/Users/Gustavo/Documents/NetBeansProjects/rmiServer/src/interfaces/InterfaceServ.java</file>
+            <file>file:/C:/Users/Gustavo/Documents/NetBeansProjects/rmiServer/src/principal/InterfaceServImpl.java</file>
         </group>
     </open-files>
 </project-private>

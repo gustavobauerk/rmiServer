@@ -11,6 +11,10 @@ import stack.LeiaCSV;
  */
 public class InterfaceServImpl extends UnicastRemoteObject implements InterfaceServ {
 
+    protected InterfaceServImpl() throws RemoteException {
+        super();
+    }
+
     @Override
     public Trip searchAirfare(boolean ida, String source, String destination, String dateIda, String dateVolta, int passagens) throws RemoteException {
         Trip result = new Trip();

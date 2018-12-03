@@ -28,7 +28,7 @@ public class LeiaCSV {
     public static Trip searchTrip(boolean ida, String source, String destination, String dateIda, String dateVolta, int passagens) {
         Trip result = new Trip();
         //Path do arquivo de passagens
-        String arquivoCSV = "C:\\Users\\Gustavo\\Documents\\NetBeansProjects\\Server\\src\\stack\\passagem.csv";
+        String arquivoCSV = "C:\\Users\\Gustavo\\Documents\\NetBeansProjects\\rmiServer\\src\\stack\\passagem.csv";
         BufferedReader br = null;
         String linha = "";
         //Divisor de strings
@@ -103,7 +103,7 @@ public class LeiaCSV {
         boolean result = false;
         boolean flag1 = false;
         boolean flag2 = false;
-        String arquivoCSV = "C:\\Users\\Gustavo\\Documents\\NetBeansProjects\\Server\\src\\stack\\passagem.csv";
+        String arquivoCSV = "C:\\Users\\Gustavo\\Documents\\NetBeansProjects\\rmiServer\\src\\stack\\passagem.csv";
         BufferedReader br = null;
         String linha = "";
         String csvDivisor = ",";
@@ -189,8 +189,8 @@ public class LeiaCSV {
 
     public static Hotel searchHotel(String name, String flightdate, String flightdateVolta, int numberOfRooms, int numberOfPeople) {
         Hotel result = new Hotel();
-        String hotelCSV = "C:\\Users\\Gustavo\\Documents\\NetBeansProjects\\Server\\src\\stack\\hotel.csv";
-        String quartoCSV = "C:\\Users\\Gustavo\\Documents\\NetBeansProjects\\Server\\src\\stack\\quarto.csv";
+        String hotelCSV = "C:\\Users\\Gustavo\\Documents\\NetBeansProjects\\rmiServer\\src\\stack\\hotel.csv";
+        String quartoCSV = "C:\\Users\\Gustavo\\Documents\\NetBeansProjects\\rmiServer\\src\\stack\\quarto.csv";
         BufferedReader br = null;
         String linha = "";
         String csvDivisor = ",";
@@ -244,8 +244,8 @@ public class LeiaCSV {
 
     public synchronized static boolean buyHotel(String name, String flightdate, String flightdateVolta, int numberOfRooms, int numberOfPeople) {
         boolean result = false;
-        String hotelCSV = "C:\\Users\\Gustavo\\Documents\\NetBeansProjects\\Server\\src\\stack\\hotel.csv";
-        String quartoCSV = "C:\\Users\\Gustavo\\Documents\\NetBeansProjects\\Server\\src\\stack\\quarto.csv";
+        String hotelCSV = "C:\\Users\\Gustavo\\Documents\\NetBeansProjects\\rmiServer\\src\\stack\\hotel.csv";
+        String quartoCSV = "C:\\Users\\Gustavo\\Documents\\NetBeansProjects\\rmiServer\\src\\stack\\quarto.csv";
         BufferedReader br = null;
         String linha = "";
         String csvDivisor = ",";
@@ -324,7 +324,7 @@ public class LeiaCSV {
     }
 
     public static void registrar(String event, InterfaceCliente client, String destination, Integer price) {
-        String registro = "C:\\Users\\Gustavo\\Documents\\NetBeansProjects\\Server\\src\\stack\\interesse.csv";
+        String registro = "C:\\Users\\Gustavo\\Documents\\NetBeansProjects\\rmiServer\\src\\stack\\interesse.csv";
         BufferedReader br = null;
         String linha = "";
         String csvDivisor = ",";
